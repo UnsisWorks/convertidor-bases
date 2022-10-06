@@ -4,18 +4,32 @@
  */
 package main;
 
+import dep.methods;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author labtecweb10
  */
 public class main extends javax.swing.JFrame {
 
+    char letters[] = new char[6];
+
     /**
      * Creates new form main
      */
     public main() {
         initComponents();
-        this.setSize(873, 448);
+        this.setSize(873, 548);
+        this.setLocationRelativeTo(null);
+
+        letters[0] = 'A';
+        letters[1] = 'B';
+        letters[2] = 'C';
+        letters[3] = 'D';
+        letters[4] = 'E';
+        letters[5] = 'F';
     }
 
     /**
@@ -29,18 +43,143 @@ public class main extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         boxType = new javax.swing.JComboBox<>();
+        buttonCalc = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        textInput = new javax.swing.JTextField();
+        labelWarr = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextField1.setBackground(new java.awt.Color(102, 153, 255));
+        jTextField1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 220, 25));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 220, 25));
 
-        boxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hexadecimal", "Binario", "Decimal", "Octal", " " }));
-        getContentPane().add(boxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
+        boxType.setBackground(new java.awt.Color(102, 153, 255));
+        boxType.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        boxType.setForeground(new java.awt.Color(255, 255, 255));
+        boxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hexadecimal", "      Binario", "     Decimal", "       Octal" }));
+        getContentPane().add(boxType, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 160, 25));
+
+        buttonCalc.setBackground(new java.awt.Color(102, 153, 255));
+        buttonCalc.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        buttonCalc.setForeground(new java.awt.Color(255, 255, 255));
+        buttonCalc.setText("Calcular");
+        buttonCalc.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buttonCalc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCalcActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonCalc, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 110, -1));
+        buttonCalc.getAccessibleContext().setAccessibleName("buttonCalc");
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel1.setText("CONVERTIDOR ENTRE BASES");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+
+        jTextField2.setBackground(new java.awt.Color(102, 153, 255));
+        jTextField2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 220, 25));
+
+        jTextField3.setBackground(new java.awt.Color(102, 153, 255));
+        jTextField3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 220, 25));
+
+        textInput.setBackground(new java.awt.Color(102, 153, 255));
+        textInput.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        textInput.setForeground(new java.awt.Color(255, 255, 255));
+        textInput.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textInputKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textInputKeyReleased(evt);
+            }
+        });
+        getContentPane().add(textInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 220, 25));
+
+        labelWarr.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        labelWarr.setForeground(new java.awt.Color(51, 0, 0));
+        getContentPane().add(labelWarr, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 410, 40));
+        labelWarr.getAccessibleContext().setAccessibleName("labelWarrning");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void textInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textInputKeyReleased
+
+
+    }//GEN-LAST:event_textInputKeyReleased
+
+    private void buttonCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalcActionPerformed
+        //boolean continues = methods.getV
+    }//GEN-LAST:event_buttonCalcActionPerformed
+
+    private void textInputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textInputKeyPressed
+        int index = boxType.getSelectedIndex();
+        String container = textInput.getText();
+        String type = methods.getBase(index);
+        System.out.println("Select: " + type);
+        boolean continues = true;
+
+        switch (type) {
+            case "Hexadecimal":
+
+                // Validacion para letras
+                for (char letter : letters) {
+                    for (int i = 0; i < container.length(); i++) {
+
+                        // Validacionn para numeros
+                        try {
+                            int num = container.charAt(i);
+
+                            if (num >= 8 || (num < 0)) {
+                                //JOptionPane.showMessageDialog(null, "No ");
+                                continues = false;
+                                labelWarr.setText("Rango de numero invalido");
+                            } else {
+
+                                labelWarr.setText("fr");
+                            }
+                        } catch (NumberFormatException e) {
+                            if (container.charAt(i) == letter) {
+                                continues = true;
+                                labelWarr.setText("");
+                            } else {
+                                continues = false;
+                                labelWarr.setText("Rango de letra invalido");
+                                
+                            }
+                        }
+                    }
+
+                }
+
+                break;
+
+            case "binario":
+                break;
+            case "Decimal":
+                break;
+            case "Octal":
+                break;
+            default:
+                throw new AssertionError();
+        }
+        System.out.println("State: " + continues);
+        buttonCalc.setEnabled(continues);
+    }//GEN-LAST:event_textInputKeyPressed
 
     /**
      * @param args the command line arguments
@@ -79,6 +218,12 @@ public class main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxType;
+    private javax.swing.JButton buttonCalc;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel labelWarr;
+    private javax.swing.JTextField textInput;
     // End of variables declaration//GEN-END:variables
 }
