@@ -135,39 +135,7 @@ public class main extends javax.swing.JFrame {
 
         switch (type) {
             case "Hexadecimal":
-
-                // Validacion para letras
-                for (char letter : letters) {
-                    for (int i = 0; i < container.length(); i++) {
-
-                        // Validacionn para numeros
-                        try {
-                            int num = container.charAt(i);
-
-                            if (num >= 8 || (num < 0)) {
-                                //JOptionPane.showMessageDialog(null, "No ");
-                                continues = false;
-                                labelWarr.setText("Rango de numero invalido");
-                            } else {
-
-                                labelWarr.setText("fr");
-                            }
-                        } catch (NumberFormatException e) {
-                            if (container.charAt(i) == letter) {
-                                continues = true;
-                                labelWarr.setText("");
-                            } else {
-                                continues = false;
-                                labelWarr.setText("Rango de letra invalido");
-                                
-                            }
-                        }
-                    }
-
-                }
-
                 break;
-
             case "binario":
                 break;
             case "Decimal":
